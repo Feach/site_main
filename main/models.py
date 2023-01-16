@@ -18,6 +18,11 @@ class Category(MPTTModel):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
+
     class MPTTMeta:
         order_insertion_by = ['name']
 
@@ -25,6 +30,11 @@ class Category(MPTTModel):
 class Tag(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=50)
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Тэг'
+        verbose_name_plural = 'Тэги'
 
     def __str__(self):
         return self.name
@@ -46,6 +56,11 @@ class Product(models.Model):
     create_at = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=200, default='')
 
+    class Meta:
+        ordering = ('title',)
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Товары'
+
     def __str__(self):
         return self.title
 
@@ -57,6 +72,11 @@ class Reviews(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField()
     message = models.TextField(max_length=500)
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'
 
     def __str__(self):
         return self.name

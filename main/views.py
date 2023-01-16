@@ -1,7 +1,8 @@
+from django.db.models import Prefetch
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView
 
-from .models import Product, Reviews
+from .models import Product, Reviews, Category
 
 
 class HomeView(ListView):
@@ -10,8 +11,11 @@ class HomeView(ListView):
 
 
 class MenuView(ListView):
-    model = Product
+    model = Category, Product
     template_name = "main/menu.html"
+
+    def get_queryset(self):
+        return Category.objects.prefetch_related(Prefetch("product", Product.objects.all()))
 
 
 class ProductListView(ListView):
