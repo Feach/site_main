@@ -2,7 +2,7 @@ from django.db.models import Prefetch
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView
 
-from .models import Product, Reviews, Category
+from .models import Product, Category
 
 
 class HomeView(ListView):

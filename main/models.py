@@ -68,18 +68,7 @@ class Product(models.Model):
         return reverse("product_single", kwargs={"slug": self.category.slug, "product_slug": self.slug})
 
 
-class Reviews(models.Model):
-    name = models.CharField(max_length=50)
-    email = models.EmailField()
-    message = models.TextField(max_length=500)
 
-    class Meta:
-        ordering = ('name',)
-        verbose_name = 'Отзыв'
-        verbose_name_plural = 'Отзывы'
-
-    def __str__(self):
-        return self.name
 
 
 

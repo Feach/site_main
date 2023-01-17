@@ -21,7 +21,6 @@ class CategoryAdmin(MPTTModelAdmin):
 admin.site.register(models.Category, CategoryAdmin)
 admin.site.register(models.Product, ProductAdmin)
 admin.site.register(models.Tag)
-admin.site.register(models.Reviews)
 
 
 

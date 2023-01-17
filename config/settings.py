@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.yandex',
 
     'main',
+    'contact',
 ]
 
 MIDDLEWARE = [
@@ -158,4 +159,4 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-LOGIN_URL_REDIRECT = '/'
+LOGIN_REDIRECT_URL = '/'
