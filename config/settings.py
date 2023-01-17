@@ -26,9 +26,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     'mptt',
     'ckeditor',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    'allauth.socialaccount.providers.apple',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.vk',
+    'allauth.socialaccount.providers.yandex',
 
     'main',
 ]
@@ -123,3 +133,29 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
+AUTHENTICATION_BACKENDS = [
+
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+]
+
+SITE_ID = 1
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': '51527843',
+            'secret': 'cPLVNnKjRxaVhYb7xLtC',
+            'key': '9fbc69df9fbc69df9fbc69df6d9cae297c99fbc9fbc69dffc7a50a1234c4f8c5ea9b80d'
+        }
+    }
+}
+
+LOGIN_URL_REDIRECT = '/'
