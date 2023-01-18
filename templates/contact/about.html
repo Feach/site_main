@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block content %}
 <!--шапка-->
     <section class="home-slider owl-carousel">
 
@@ -17,20 +18,25 @@
       </div>
     </section>
 <!--наша история-->
-    <section class="ftco-about d-md-flex">
-    	<div class="one-half img" style="background-image: url(images/about.jpg);"></div>
-    	<div class="one-half ftco-animate">
-    		<div class="overlap">
-	        <div class="heading-section ftco-animate ">
-	        	<span class="subheading">About</span>
-	          <h2 class="mb-4">Наша История</h2>
-	        </div>
-	        <div>
-	  				<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
-	  			</div>
-  			</div>
-    	</div>
-    </section>
+{% for about in about_list %}
+	{% if forloop.first %}
+		<section class="ftco-about d-md-flex">
+			<div class="one-half img" style="background-image: url({{ about.image_large.url }});"></div>
+				<div class="one-half ftco-animate">
+					<div class="overlap">
+					<div class="heading-section ftco-animate ">
+						<span class="subheading">About</span>
+					  <h2 class="mb-4">{{ about.title }}</h2>
+					</div>
+
+					<div>
+						<p>{{ about.text|safe }}</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	{% endif %}
+{% endfor %}
 <!--отзывы-->
     <section class="ftco-section img" id="ftco-testimony" style="background-image: url(images/bg_1.jpg);"  data-stellar-background-ratio="0.5">
     	<div class="overlay"></div>
@@ -114,44 +120,48 @@
 	    </div>
 	  </section>
 <!--наше меню-->
-    <section class="ftco-section">
-    	<div class="container">
-    		<div class="row align-items-center">
-    			<div class="col-md-6 pr-md-5">
-    				<div class="heading-section text-md-right ftco-animate">
-	          	<span class="subheading">Menu</span>
-	            <h2 class="mb-4">Наше меню</h2>
-	            <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-	            <p><a href="#" class="btn btn-primary btn-outline-primary px-4 py-3">Посмотреть меню</a></p>
-	          </div>
-    			</div>
-    			<div class="col-md-6">
-    				<div class="row">
-    					<div class="col-md-6">
-    						<div class="menu-entry">
-		    					<a href="#" class="img" style="background-image: url(/static/images/menu-1.jpg);"></a>
-		    				</div>
-    					</div>
-    					<div class="col-md-6">
-    						<div class="menu-entry mt-lg-4">
-		    					<a href="#" class="img" style="background-image: url(/static/images/menu-2.jpg);"></a>
-		    				</div>
-    					</div>
-    					<div class="col-md-6">
-    						<div class="menu-entry">
-		    					<a href="#" class="img" style="background-image: url(/static/images/menu-3.jpg);"></a>
-		    				</div>
-    					</div>
-    					<div class="col-md-6">
-    						<div class="menu-entry mt-lg-4">
-		    					<a href="#" class="img" style="background-image: url(/static/images/menu-4.jpg);"></a>
-		    				</div>
-    					</div>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
-    </section>
+{% for about in about_list %}
+	{% if forloop.counter == 2 %}
+		<section class="ftco-section">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-md-6 pr-md-5">
+						<div class="heading-section text-md-right ftco-animate">
+					<span class="subheading">Menu</span>
+					<h2 class="mb-4">{{ about.title }}</h2>
+					<p class="mb-4">{{ about.text|safe }}</p>
+					<p><a href="#" class="btn btn-primary btn-outline-primary px-4 py-3">Посмотреть меню</a></p>
+				  </div>
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="menu-entry">
+									<a href="#" class="img" style="background-image: url({{ about.image_small1.url }});"></a>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="menu-entry mt-lg-4">
+									<a href="#" class="img" style="background-image: url({{ about.image_small2.url }});"></a>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="menu-entry">
+									<a href="#" class="img" style="background-image: url({{ about.image_small3.url }});"></a>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="menu-entry mt-lg-4">
+									<a class="img" style="background-image: url({{ about.image_small4.url }});"></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	{% endif %}
+{% endfor %}
 <!--статистика-->
     <section class="ftco-counter ftco-bg-dark img" id="section-counter" style="background-image: url(/static/images/bg_2.jpg);" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
@@ -200,3 +210,4 @@
         </div>
       </div>
     </section>
+{% endblock content %}
